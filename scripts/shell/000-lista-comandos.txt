@@ -1,0 +1,155 @@
+######################################
+# BASICO EM SH
+######################################
+
+A; B    Run A and then B, regardless of success of A
+A && B  Run B if A succeeded
+A || B  Run B if A failed
+A &     Run A in background.
+
+#listar todos processos escutando na porta 8080
+lsof -i:8080
+
+# listar todos processos com nome de java
+ps -ef | greep java
+
+# matar processo X
+kill - 9 X
+
+#sintaxe para executar comando
+$(comando)
+
+#sintaxe para executar comando
+`comando`
+
+#mudar de diretorio
+cd /nome_do_diretorio
+
+#voltar um nivel de pasta
+cd ..
+
+# mostrar diretorio corrente
+pwd
+
+#criar pasta
+mkdir pasta
+
+#criar arquivo
+touch arquivo
+
+
+#dar permissoes a arquivo ou pasta
+chmod +rwx file
+
+#start stop listar-todos-servicos service
+service tomcat start
+service tomcat stop
+service --status-all
+
+#ver em tempo real as ultimas linhas de um arquivo
+tail -n 20 /etc/passwd
+tail -f meuarquivo.log | grep -qx "Finished: SUCCESS"
+tail -f access.log | grep 192.168.1.5
+
+# limpar tela
+clear
+
+# [GREP] filtrar resultado
+ps -ef | grep java
+
+# STRING LOWER UPPER
+STR_ORIGINAL=aBcDeFgHiJkLmNoP
+STR_UPPER=`echo $STR_ORIGINAL | tr a-z A-Z`
+STR_LOWER=`echo $STR_ORIGINAL | tr A-Z a-z`
+
+
+
+######################################
+# PROGRAMACAO EM SH
+######################################
+#sintaxe usada no começo de um script .SH
+#!/bin/bash
+
+#excecutar script sh
+.\script.sh
+
+#imprimir mensagem na tela
+echo "mensagem"
+
+#atribuindo criando e atribuindo variavel
+$variavel="seila"
+echo "bem vindo $variavel"
+
+# imprimir mensagem com variavel
+echo "mensagem" $variavel
+
+# [LEITURA DE TECLADO NO SCRIPT]
+read PASSWORD
+
+# [LOOP FOR]
+for each in <comando-que-devolve-uma-lista>
+do <comando-acao>
+done
+
+# [LOOP WHILE]
+while [ "$CORRECT" != "true" ]
+do <COMANDO-ACAO>
+done
+
+# [LOOP WHILE INFINITO]
+while :
+do <COMANDO-ACAO>
+done
+
+
+# [OPERADORES]
+|| 
+&&
+!=
+==
+
+# [Condicoes entre COLCHETES]
+ if [ "$NUM" -lt 1 ] || [ "$NUM" -gt 10 ]; then
+
+# [IF ELSE elif ]
+if [ "$PASSWORD" == "$VALID_PASSWORD" ]; then
+elif [ "$PASSWORD" != "$VALID_PASSWORD" ]; then
+else
+fi
+
+# [PARAMETROS COMPARACAO]:
+-eq	equal to
+-ne	not equal to
+-lt	less than
+-le	less than or equal to
+-gt	greater than
+-ge	greater than or equal to
+
+# [File Operations]:
+-s	file exists and is not empty
+-f	file exists and is not a directory
+-d	directory exists
+-x	file is executable
+-w	file is writable
+-r	file is readable
+
+#adicionando uma linha no final do arquivo
+echo "$ID,$FIRST,$LAST,$AGE" >> users.dat
+
+# [switch case]
+case $NUM in
+	1) echo "one" ;;
+	2) echo "two" ;;
+	3) echo "three" ;;
+	*) echo "INVALID NUMBER!" ;;
+esac
+
+# declarando funcoes
+nome_da_funcao()
+{
+	echo "mensagem $1 " $2
+}
+
+#chamando a funcao
+nome_da_funcao parametro1 parametro2 parametro3
+
